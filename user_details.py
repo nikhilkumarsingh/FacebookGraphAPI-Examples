@@ -3,7 +3,7 @@ import facebook
 
 
 #authentication
-access_token='EAAWUex140VQBAP0iZAHZBi2v82fiZBiR025jlgBmSiyEYzd0H8CWvPwZCZA1i93oKX07J9LlZB8ukq3nG6NBFiZBt7L9Sh9aMp1lVUXdoPC4zP5ILC8DvqQo3dsmaNpKDZCxlsozMpopiXDEriMw8NVw2NCnWLrcY44ZD'
+access_token='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 graph = facebook.GraphAPI(access_token=access_token, version='2.5')
 
 
