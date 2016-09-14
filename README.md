@@ -9,7 +9,7 @@
 - tqdm (for progress bar)
   > pip install tqdm
 - tabulate (for fancy table)
-  > pip insatll tabulate
+  > pip install tabulate
 - Facebook app user access token.(See the steps below to get a token)
 
 
