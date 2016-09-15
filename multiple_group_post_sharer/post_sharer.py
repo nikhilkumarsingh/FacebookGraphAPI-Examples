@@ -5,6 +5,11 @@ from checkbox import CHECKBOX
 import json
 
 
+'''
+A collection is a list of groups.
+We can post to a complete collection at one time.
+'''
+
 def add_groups(collection,collection_name):
     query = raw_input("Enter the group keywords to search for groups:")
     result = graph.request('search', {'q':query , 'type': 'group'})
