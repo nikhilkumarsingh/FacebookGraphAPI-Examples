@@ -30,3 +30,12 @@ Now,you should see a green dot next to app's name, and the text This app is publ
 
 - Make a note of the short-lived token shown in Graph API Explorer.
    Facebook has deprecated offline access, the next best thing is long-lived token which expires in 60 days. We will convert the short-lived access token noted above to a long-lived token.
+
+- For that, fill in the values in the URL below and open it in a browser:
+    >https://graph.facebook.com/oauth/access_token?
+    >client_id={APP_ID}&
+    >client_secret={APP_SECRET}&
+    >grant_type=fb_exchange_token&
+    >fb_exchange_token={EXISTING_ACCESS_TOKEN}
+
+- You should see access_token={...}&expires={...}. This new access_token is the long-lived token you can use in your Python script.
