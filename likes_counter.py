@@ -1,4 +1,4 @@
-import user_details
+import api_utils
 from tqdm import tqdm
 from tabulate import tabulate
 
@@ -19,12 +19,12 @@ def show_table(friends):
 
 def main():
    friends={}
-   myposts = user_details.get_user_posts() #get all posts on my wall
+   myposts = api_utils.get_user_posts() #get all posts on my wall
    print "%d posts found on your timeline!\n\nScanning posts\n\n"%(len(myposts))
    
    
    for post in tqdm(myposts):
-      likes = user_details.get_post_likes(post)  #get likes details for each post
+      likes = api_utils.get_post_likes(post)  #get likes details for each post
       for like in likes:
          if like['name'] in friends.keys():
             friends[like['name']]+=1
