@@ -1,5 +1,9 @@
 #  *FacebookGraphAPI-Examples*
 
+# Examples this repository contains
+- Python script to create a [likes-counter](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/blob/master/likes_counter.py) of your timeline posts.
+- Python script to [share your post to multiple groups](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/tree/master/multiple_group_post_sharer) at once (with a pretty nice UI ;) )
+
 # Requirements
 - Python 2.X
 - Python Facebook-SDK
