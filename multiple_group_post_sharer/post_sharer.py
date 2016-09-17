@@ -3,30 +3,38 @@ sys.path.insert(0,"...\\FacebookGraphAPI_Examples\\")     #fill ... with complet
 from api_utils import graph,get_all_pages
 from checkbox import CHECKBOX
 import json
-
+import FBgroups
 
 '''
 A collection is a list of groups.
 We can post to a complete collection at one time.
 '''
 
-def add_groups(collection,collection_name):
-    query = raw_input("Enter the group keywords to search for groups:")
-    result = graph.request('search', {'q':query , 'type': 'group'})
-    all_groups = get_all_pages(result)
+def update_group_info():
+    all_groups = FBgroups.get_groups()
+    with open('user_groups.txt','w') as f:
+        f.write(json.dumps(all_groups))
+    print "FB groups info updated."
+    return
+    
 
-    group_names = [group['name'] for group in all_groups[:15]]
+
+def add_groups(collection,collection_name):
+    with open('user_groups.txt','r') as f:
+        all_groups = json.load(f)
+
+    all_groups = [group for group in all_groups if group not in collection]
+    group_names = [group['name'] for group in all_groups]
     groups_selected = CHECKBOX(group_names).checked
 
-    
-    for x in range(15):
+    for x in range(len(all_groups)):
         if groups_selected[x]:
-            if all_groups[x] not in collection:
-                collection.append(all_groups[x])
+            collection.append(all_groups[x])
 
     with open(collection_name+".txt",'w') as myfile:
         myfile.write(json.dumps(collection))
     
+    return
 
 
 def create_collection():
@@ -57,14 +65,23 @@ def create_collection():
 
 def open_collection():
     collection_name = raw_input("Enter collection name:")
-    with open(collection_name+".txt",'r') as myfile:
-        collection = json.load(myfile)
+
+    try:
+        with open(collection_name+".txt",'r') as myfile:
+            collection = json.load(myfile)
+    except IOError:
+         print "No such collection found."
+         return
             
     return collection
 
 
 def show_collection():
     collection = open_collection()
+
+    if collection == None:
+        return
+    
     print "Collection contains following groups:"    
     for group in collection:
         print group['name'].encode("utf8")
@@ -79,9 +96,9 @@ def share_post():
     for group in collection:
         try:
             graph.put_object(parent_object = group['id'], connection_name = 'feed', message=message, link=link)
-            print "Post successfully shared with %s"%(group['name'])
+            print "Post successfully shared with %s"%(group['name'].encode('utf8'))
         except:
-            print "Post can't be shared with %s"%(group['name'])
+            print "Post can't be shared with %s"%(group['name'].encode('utf8'))
             pass
     return    
 
@@ -90,7 +107,7 @@ def share_post():
 
 
 def main():
-    print "Use following commands:\n1. 'create' to create or update a collection.\n2. 'show' to see groups in a collection.\n3. 'share' to share a post to any collection.\n4. 'exit' to exit the program.\n\nP.S: A collection is a list of groups."
+    print "Use following commands:\n1. 'create' to create or update a collection.\n2. 'show' to see groups in a collection.\n3. 'share' to share a post to any collection.\n4. 'update' to update the FB groups info. \n5. 'exit' to exit the program.\n\nP.S: A collection is a list of groups."
 
     while(1):
         opt = raw_input('\n>>>')
@@ -99,7 +116,9 @@ def main():
         elif opt == 'show':
             show_collection()
         elif opt == 'share':
-            share_post();
+            share_post()
+        elif opt == 'update':
+            update_group_info()
         elif opt == 'exit':
             break
         else:
@@ -111,6 +130,4 @@ def main():
 
 if __name__=="__main__":
     main()
-
-
 
