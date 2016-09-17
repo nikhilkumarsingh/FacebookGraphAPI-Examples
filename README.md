@@ -10,10 +10,12 @@
     > pip install facebook-sdk
 - Python requests module
   > pip install requests
-- tqdm (for progress bar)
-  > pip install tqdm
-- tabulate (for fancy table)
-  > pip install tabulate
+- *For Likes-counter program:*
+   - tqdm (for progress bar) > pip install tqdm
+   - tabulate (for fancy table) > pip install tabulate
+- *For multiple groups post sharer program:*
+   - Beautiful Soup (for scraping the user groups from web) > pip install bs4
+   - Selenium (for scraping the user groups from web) > pip install selenium
 - Facebook app user access token.(See the steps below to get a token)
 
 
