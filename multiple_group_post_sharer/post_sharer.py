@@ -41,7 +41,9 @@ def create_collection():
     opt = raw_input("Update an existing collection?(y/n):")
 
     if opt == 'y':
-        collection = open_collection()
+        collection,collection_name = open_collection()
+        if collection == None:
+            return
     else:
         collection_name = raw_input("Choose a name for your new collection:")
         collection = []
@@ -66,16 +68,16 @@ def open_collection():
          print "No such collection found."
          return
             
-    return collection
+    return collection,collection_name
 
 
 def show_collection():
-    collection = open_collection()
+    collection,collection_name = open_collection()
 
     if collection == None:
         return
     
-    print "Collection contains following groups:"    
+    print "%s collection contains following groups:"%(collection_name)   
     for group in collection:
         print group['name'].encode("utf8")
 
@@ -123,4 +125,8 @@ def main():
 
 if __name__=="__main__":
     main()
+
+
+
+
 
