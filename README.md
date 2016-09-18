@@ -3,6 +3,7 @@
 # Examples this repository contains
 - Python script to create a [likes-counter](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/tree/master/Likes_Counter) of your timeline posts.
 - Python script to [share your post to multiple groups](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/tree/master/multiple_group_post_sharer) at once! [Click here to see details](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/blob/master/multiple_group_post_sharer/readme.md)
+- Python script to create a [Word-Cloud](https://github.com/nikhilkumarsingh/FacebookGraphAPI-Examples/tree/master/Timeline_word_cloud) of your FB timeline.
 
 # Requirements
 - Python 2.X
@@ -16,6 +17,10 @@
 - *For multiple groups post sharer program:*
    - Beautiful Soup (for scraping the user groups from web) > pip install bs4
    - Selenium (for scraping the user groups from web) > pip install selenium
+- *For timeline wordcloud program:*
+   - WordCloud > pip install wordcloud
+   - PIL > pip install Pillow
+   - Numpy > pip install numpy
 - Facebook app user access token.(See the steps below to get a token)
 
 
