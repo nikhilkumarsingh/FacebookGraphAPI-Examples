@@ -1,6 +1,6 @@
 import sys
-sys.path.insert(0,"...\\FacebookGraphAPI_Examples\\")     #fill ... with complete path to this folder
-from api_utils import graph,get_all_pages
+sys.path.insert(0,"...\\FacebookGraphAPI_Examples\\")     #fill ... with complete path to the parent directory
+from api_utils import graph
 from checkbox import CHECKBOX
 import json
 import FBgroups
@@ -41,14 +41,7 @@ def create_collection():
     opt = raw_input("Update an existing collection?(y/n):")
 
     if opt == 'y':
-        try:
-            collection_name = raw_input("Enter collection name:")
-            with open(collection_name+".txt",'r') as myfile:
-                collection = json.load(myfile)
-        except IOError:
-            print "No such collection exists!!!\n"
-            create_collection()
-            return
+        collection = open_collection()
     else:
         collection_name = raw_input("Choose a name for your new collection:")
         collection = []
