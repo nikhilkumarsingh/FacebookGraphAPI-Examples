@@ -102,8 +102,15 @@ def share_post():
 
 
 def main():
-    print "Use following commands:\n1. 'create' to create or update a collection.\n2. 'show' to see groups in a collection.\n3. 'share' to share a post to any collection.\n4. 'update' to update the FB groups info. \n5. 'exit' to exit the program.\n\nP.S: A collection is a list of groups."
-
+    print '''
+          Use following commands:\n
+          1. 'create' to create or update a collection.
+          2. 'show' to see groups in a collection.
+          3. 'share' to share a post to any collection.
+          4. 'update' to update the FB groups info.
+          5. 'exit' to exit the program.\n
+          P.S: A collection is a list of groups.
+          '''
     while(1):
         opt = raw_input('\n>>>')
         if opt == 'create':
