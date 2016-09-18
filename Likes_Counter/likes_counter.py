@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0,"...\\FacebookGraphAPI_Examples\\")     #fill ... with complete path to the parent directory
 import api_utils
 from tqdm import tqdm           #for progress bar
 from tabulate import tabulate   #for pretty table printing
