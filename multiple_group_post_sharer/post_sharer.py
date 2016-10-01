@@ -4,6 +4,8 @@ from api_utils import graph
 from checkbox import CHECKBOX
 import json
 import FBgroups
+from time import sleep
+from random import random
 
 '''
 A collection is a list of groups.
@@ -89,6 +91,7 @@ def share_post():
     link = raw_input("Enter the link of the post you want to share:")
     message = raw_input("Enter the message for shared post:")
     for group in collection:
+        sleep(10*(random()))
         try:
             graph.put_object(parent_object = group['id'], connection_name = 'feed', message=message, link=link)
             print "Post successfully shared with %s"%(group['name'].encode('utf8'))
